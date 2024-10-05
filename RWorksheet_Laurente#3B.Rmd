@@ -1,0 +1,172 @@
+---
+title: "RWorksheet_Laurente#3B"
+author: "Karl"
+date: "2024-10-05"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+---------------------------------------------------------------------------------------------------------------------------
+#KARL ANDREI G. LAURENTE
+#BSIT 2-B
+#CS 101
+
+```{r}
+#1.) 
+#a.) 
+Respondents <- seq(20)
+Sex <- c(2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2)
+Fathers_Occupation <- c(1, 3, 3, 3, 1, 2, 3, 1, 1, 1, 3, 2, 1, 3, 3, 1, 3, 1, 2, 1)
+Persons_at_Home <- c(5, 7, 3, 8, 5, 9, 6, 7, 8, 4, 7, 5, 4, 7, 8, 8, 3, 11, 7, 6)
+Siblings_at_School <- c(6, 4, 4, 1, 2, 1, 5, 3, 1, 2, 3, 2, 5, 5, 2, 1, 2, 5, 3, 2)
+Types_of_Houses <- c(1, 2, 3, 1, 1, 3, 3, 1, 2, 3, 2, 3, 2, 2, 3, 3, 3, 3, 3, 2)
+a_one <- data.frame(Respondents, Sex, Fathers_Occupation, Persons_at_Home, Siblings_at_School, Types_of_Houses)
+a_one
+```
+
+```{r}
+#1.) 
+#b.) Every respondent are asked different questions regarding their Sex, Father's Occupation, Persons at Home, Siblings at School, and Types of Houses. While numeric answers align and are appropriate for the other questions, some questions assigned pre-determined legends or assignments to the numbers so that their numeric answer should correspond to its assigned assignment. In this case, Sex, Father's Occupation, and Types of Houses are questions that are normally not answerable by numeric values but since the authors of the survey assigned examples or legends to the numbers, they are now acceptable answers.
+```
+
+```{r}
+#1.) 
+#c.) 
+mean(Siblings_at_School)
+# Incorrect, 5 is not the mean number of Siblings attending but rather 2.95.
+```
+
+```{r}
+#1.) 
+#d.)
+a_one[1:2, ]
+#testing
+a_one[c(1,3),c(1,3)]
+```
+
+```{r}
+#1.)
+#e.) 
+a_one[c(3, 5),c(2,4)]
+```
+
+```{r}
+#1.)
+#f.) 
+types_houses <- c(a_one$Types_of_Houses)
+types_houses
+```
+
+```{r}
+#1.) 
+#g.)
+one_g <- a_one$Respondents[a_one$Sex ==1 & a_one$Fathers_Occupation ==1]
+print(one_g)
+```
+
+```{r}
+#1.)
+#h.)
+one_h <- a_one$Respondents[a_one$Sex == 2 & a_one$Siblings_at_School >= 5]
+one_h1 <- paste("Row: ", one_h)
+one_h1
+```
+
+```{r}
+#2.) 
+#a.) 
+two_df = data.frame(Ints=integer(),
+          Doubles=double(),
+          Characters=character(),
+          Logicals=logical(),
+          Factors=factor(),
+          stringsAsFactors=FALSE)
+print("Structure of the empty dataframe: ")
+print(str(two_df))
+#We declared the Ints column to accept integer values but since it has no values inside it, the column will remain empty until it has been filled, the same applies to the examples below, the Doubles column accepts numeric values with decimals, Characters accepts character strings, Factors accept factors or levels, while stringsAsFactors=FALSE states that character strings are not automatically converted into factors as was the default feature of R.
+```
+
+```{r}
+#.3)
+#a.) 
+RESPONDENTS <- seq(10)
+SEX <- c("Male", "Female", "Female", "Male", "Male", "Female", "Female", "Male", "Female", "Male")
+FATHERS_OCCUPATION <- c(1, 2, 3, 3, 1, 2, 2, 3, 1, 3)
+PERSONS_AT_HOME <- c(5, 7, 3, 8, 6, 4, 4, 2, 11, 6)
+SIBLINGS_AT_SCHOOL <- c(2, 3, 0, 5, 2, 3, 1, 2, 6, 2)
+TYPES_OF_HOUSES <- c("Wood", "Congrete", "Congrete", "Wood", "Semi-congrete", "Semi-congrete", "Wood", "Semi-congrete", "Semi-congrete", "Congrete")
+HouseholdData <- data.frame(RESPONDENTS, SEX, FATHERS_OCCUPATION, PERSONS_AT_HOME, SIBLINGS_AT_SCHOOL, TYPES_OF_HOUSES)
+HouseholdData
+write.csv(HouseholdData, "C:\\Users\\laure\\Documents\\Karl's Stuff\\ISATU\\2nd Year\\Data Science\\Worksheet-3B\\RWorksheet_Laurente#3B\\HouseholdData.csv", row.names=TRUE)
+HouseholdData_Retrieved <- read.csv("HouseholdData.csv")
+HouseholdData_Retrieved
+```
+
+```{r}
+#3.)
+#b.) 
+HouseholdData$SEX <- factor(HouseholdData$SEX, levels = c("Male", "Female"))
+HouseholdData$SEX <- as.integer(HouseholdData$SEX)
+HouseholdData
+```
+
+```{r}
+#3.)
+#c.) 
+HouseholdData$TYPES_OF_HOUSES <- factor(HouseholdData$TYPES_OF_HOUSES, levels = c("Wood", "Congrete", "Semi-congrete"))
+HouseholdData$TYPES_OF_HOUSES <- as.integer(HouseholdData$TYPES_OF_HOUSES)
+HouseholdData
+```
+
+```{r}
+#3.)
+#d.) 
+HouseholdData$FATHERS_OCCUPATION <- factor(HouseholdData$FATHERS_OCCUPATION, levels = c(1,2,3), labels = c("Farmer", "Driver", "Others"))
+HouseholdData$FATHERS_OCCUPATION <- as.character(HouseholdData$FATHERS_OCCUPATION)
+HouseholdData
+```
+
+```{r}
+#3.) 
+#e.) 
+three_e <- HouseholdData$RESPONDENTS[HouseholdData$SEX == 2 & HouseholdData$FATHERS_OCCUPATION == "Driver"]
+three_e1 <- paste("Row: ", three_e)
+three_e1
+```
+
+```{r}
+#3.) 
+#f.) 
+three_f <- HouseholdData$SIBLINGS_AT_SCHOOL[HouseholdData$SIBLINGS_AT_SCHOOL >= 5]
+three_f1 <- paste("Row: ", three_f)
+three_f1
+```
+
+```{r}
+#4.)
+#The graph displays the amount of sentiments per day from a social media platform, the sentiments are categorized into Positive, Negative, and Neutral. The numbers on the left side of the graph represents the amount or the levels of sentiment, the bottom part presents what sentiment, and the top part shows the date of when the sentiments were recorded. 
+```
+
